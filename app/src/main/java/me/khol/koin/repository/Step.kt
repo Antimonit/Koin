@@ -1,4 +1,4 @@
-package me.khol.koin.screens.onboarding
+package me.khol.koin.repository
 
 enum class Step {
     ONE,

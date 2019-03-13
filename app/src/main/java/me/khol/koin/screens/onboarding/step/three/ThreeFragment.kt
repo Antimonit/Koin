@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import me.khol.koin.R
-import me.khol.koin.screens.onboarding.step.one.ThreeViewModel
 import org.koin.android.ext.android.inject
 
 class ThreeFragment : Fragment() {

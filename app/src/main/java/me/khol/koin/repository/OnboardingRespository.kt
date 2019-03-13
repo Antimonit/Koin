@@ -3,8 +3,6 @@ package me.khol.koin.repository
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
 import io.reactivex.subjects.PublishSubject
-import me.khol.koin.screens.onboarding.Action
-import me.khol.koin.screens.onboarding.Step
 
 interface OnboardingRepository {
 

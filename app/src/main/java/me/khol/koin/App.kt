@@ -3,15 +3,14 @@ package me.khol.koin
 import android.app.Application
 import me.khol.koin.di.repositoryModule
 import me.khol.koin.di.viewModelModule
-import org.koin.core.KoinApplication
-import org.koin.core.context.startKoin
+import org.koin.android.ext.android.startKoin
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
 
-        startKoin(KoinApplication.create().modules(
+        startKoin(this, listOf(
             repositoryModule,
             viewModelModule
         ))

@@ -7,29 +7,22 @@ import io.reactivex.rxkotlin.plusAssign
 import me.khol.koin.R
 import me.khol.koin.base.BaseActivity
 import me.khol.koin.di.Scopes
+import me.khol.koin.repository.Action
+import me.khol.koin.repository.Step
 import me.khol.koin.screens.main.MainActivity
 import me.khol.koin.screens.onboarding.step.one.OneFragment
 import me.khol.koin.screens.onboarding.step.three.ThreeFragment
 import me.khol.koin.screens.onboarding.step.two.TwoFragment
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.getKoin
-import org.koin.android.ext.android.inject
-import org.koin.androidx.viewmodel.ext.getViewModel
-import org.koin.androidx.viewmodel.ext.viewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class OnboardingActivity : BaseActivity() {
 
-    // TODO: How to inject scoped ViewModel?
-
-//    private val viewModel: OnboardingViewModel by inject()
-//    private val viewModel: OnboardingViewModel by viewModel()
-//    private val viewModel: OnboardingViewModel by sharedViewModel()
-    private lateinit var viewModel: OnboardingViewModel
+    private val viewModel: OnboardingViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        val scope = getKoin().createScope(Scopes.ONBOARDING)
-        viewModel = get(scope = scope)
         super.onCreate(savedInstanceState)
+        getKoin().createScope(Scopes.ONBOARDING)
 
         setContentView(R.layout.activity_main)
 
@@ -65,7 +58,7 @@ class OnboardingActivity : BaseActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        getKoin().deleteScope(Scopes.ONBOARDING)
+        getKoin().getScope(Scopes.ONBOARDING).close()
     }
 
     override fun onBackPressed() {
